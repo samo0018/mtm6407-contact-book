@@ -1,7 +1,5 @@
 # MTM6407 Contact Book
-# Anastasia (Nas) Samoyloff 
-# 41037439
-
+# By: Anastasia (Nas) Samoyloff - 41037439
 # 8 Requirements:
 
 1. Display contacts alphabetically by last name.
