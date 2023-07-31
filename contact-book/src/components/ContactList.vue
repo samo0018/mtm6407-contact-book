@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, computed } from 'vue'
 import { onMounted } from 'vue'
 
 // *************************************** CONTACTS ******************************************
@@ -11,7 +11,21 @@ const contacts = reactive([
   { id: 5, firstname: 'George', lastname: 'Lark', phone: '250-545-2356', email: 'g_lark@gmail.com' },
 ]);
 // Sort my array of contacts alphabetically, by last name
-contacts.sort((a, b) => a.lastname.localeCompare(b.lastname))
+contacts.sort((a, b) => a.lastname.localeCompare(b.lastname));
+
+// *************************************** SEARCH A CONTACT ******************************************
+
+// New const holds the value of the search input, default is blank
+const searchQuery = ref('');
+
+// We save this function as a new const because "computed" is already a function we can import from Vue (see line 2)
+const filteredContacts = computed(() => {
+  // Return a contact that has been filtered through the contacts array
+  return contacts.filter((contact) => {
+    const fullName = `${contact.firstname} ${contact.lastname}`.toLowerCase(); // Using the filter method, we can create a "new" array that is simply the search result: first and last name combined into one (full name), and not case sensitive 
+    return fullName.includes(searchQuery.value.toLowerCase()); // When the user types in the searchbar, it is also not case sensitive 
+  });
+});
 
 // *************************************** ADD A CONTACT ******************************************
 
@@ -118,7 +132,7 @@ function toggleDetails(contactId) {
     </div>
 
     <ul class="contacts-list">
-      <li v-for="contact in contacts" :key="contact.id">
+      <li v-for="contact in filteredContacts" :key="contact.id">
             <div class="each-contact">
                   <div class="profile-icon-name" @click="toggleDetails(contact.id)">
                         <img alt="contact book icon" class="profile-icon" src="@/assets/default-profile.svg"/>
@@ -335,7 +349,6 @@ input:focus {
 .save-button:active {
       background-color: rgb(14, 67, 22);
 }
-
 .cancel-button {
       padding: 10px;
       background-color:rgb(142, 53, 53);
