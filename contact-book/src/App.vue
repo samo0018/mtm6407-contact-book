@@ -1,11 +1,9 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
 import ContactHeader from './components/ContactHeader.vue'
 import ContactList from './components/ContactList.vue';
 </script>
 
 <template>
-
   <div>
     <header>
     <div class="contact-header">
@@ -15,12 +13,10 @@ import ContactList from './components/ContactList.vue';
       </div>
     </div>
   </header>
-
   <body>
     <ContactList />
   </body>
   </div>
-
 </template>
 
 
