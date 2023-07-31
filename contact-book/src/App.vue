@@ -1,6 +1,6 @@
 <script setup>
 import ContactHeader from './components/ContactHeader.vue'
-import ContactList from './components/ContactList.vue';
+import ContactList from './components/ContactList.vue'
 </script>
 
 <template>
@@ -13,6 +13,7 @@ import ContactList from './components/ContactList.vue';
       </div>
     </div>
   </header>
+
   <body>
     <ContactList />
   </body>
@@ -30,5 +31,4 @@ import ContactList from './components/ContactList.vue';
 .contact-icon {
   display: block;
 }
-
 </style>

@@ -50,13 +50,13 @@ function saveContactsToLocalStorage() {
 }
 
 // When the component is mounted, I want to make sure all the contacts load from local storage
-// onMounted(() => {
-//   const savedContacts = localStorage.getItem('contacts')
-//   if (savedContacts) {
-//     contacts.length = 0
-//     contacts.push(...JSON.parse(savedContacts))
-//   }
-// })
+onMounted(() => {
+  const savedContacts = localStorage.getItem('contacts')
+  if (savedContacts) {
+    contacts.length = 0
+    contacts.push(...JSON.parse(savedContacts))
+  }
+})
 
 // *************************************** EDIT A CONTACT ******************************************
 
