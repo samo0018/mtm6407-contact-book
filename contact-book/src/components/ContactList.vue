@@ -11,21 +11,21 @@ const contacts = reactive([
   { id: 5, firstname: 'George', lastname: 'Lark', phone: '250-545-2356', email: 'g_lark@gmail.com' },
 ]);
 // Sort my array of contacts alphabetically, by last name
-contacts.sort((a, b) => a.lastname.localeCompare(b.lastname));
+contacts.sort((a, b) => a.lastname.localeCompare(b.lastname))
 
 // *************************************** SEARCH A CONTACT ******************************************
 
 // New const holds the value of the search input, default is blank
-const searchQuery = ref('');
+const searchQuery = ref('')
 
 // We save this function as a new const because "computed" is already a function we can import from Vue (see line 2)
 const filteredContacts = computed(() => {
   // Return a contact that has been filtered through the contacts array
   return contacts.filter((contact) => {
-    const fullName = `${contact.firstname} ${contact.lastname}`.toLowerCase(); // Using the filter method, we can create a "new" array that is simply the search result: first and last name combined into one (full name), and not case sensitive 
-    return fullName.includes(searchQuery.value.toLowerCase()); // When the user types in the searchbar, it is also not case sensitive 
-  });
-});
+    const fullName = `${contact.firstname} ${contact.lastname}`.toLowerCase() // Using the filter method, we can create a "new" array that is simply the search result: first and last name combined into one (full name), and not case sensitive 
+    return fullName.includes(searchQuery.value.toLowerCase()) // When the user types in the searchbar, it is also not case sensitive 
+  })
+})
 
 // *************************************** ADD A CONTACT ******************************************
 
