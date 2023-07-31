@@ -6,6 +6,7 @@ const contacts = reactive([
   { id: 2, firstname: 'Mary', lastname: 'Jones', phone: '250-226-4562', email: 'mary.jones@gmail.com' },
   { id: 3, firstname: 'Lucy', lastname: 'Brown', phone: '250-889-6875', email: 'lucy_b@hotmail.com' },
   { id: 4, firstname: 'Margie', lastname: 'Adams', phone: '250-543-2658', email: 'margiee46@hotmail.com' },
+  { id: 5, firstname: 'George', lastname: 'Lark', phone: '250-545-2356', email: 'g_lark@gmail.com' },
 ]);
 
 contacts.sort((a, b) => a.lastname.localeCompare(b.lastname))
@@ -45,7 +46,10 @@ function toggleDetails(contactId) {
     <ul class="contacts-list">
       <li v-for="contact in contacts" :key="contact.id">
             <div class="each-contact">
-                  <h3 @click="toggleDetails(contact.id)">{{ contact.firstname }} {{ contact.lastname }}</h3>
+                  <div class="profile-icon-name" @click="toggleDetails(contact.id)">
+                        <img alt="contact book icon" class="profile-icon" src="@/assets/default-profile.svg"/>
+                        <h3>{{ contact.firstname }} {{ contact.lastname }}</h3>
+                  </div>
                   <div class="buttons-container">
                         <button class="edit-contact-button"  @click="editContact(contact.id)">
                               <span class="edit-icon"></span>
@@ -68,6 +72,7 @@ function toggleDetails(contactId) {
 
 h3 {
       font-weight: 500;
+      font-size: 1.5rem;
 }
 .contacts-container {
       background-color: rgb(212, 212, 212);
@@ -77,13 +82,11 @@ h3 {
       display: flex;
       padding: 20px;
 }
-
 .contacts-list {
     list-style-type: none;
     background-color: rgb(255, 255, 255);
     padding-top: 20px;
 }
-
 .each-contact {
       display: flex;
       justify-content: space-between;
@@ -115,11 +118,9 @@ li:nth-child(even) {
   font-size: 16px;
   cursor: pointer;
 }
-
 .add-new-button:active {
       background-color: rgb(14, 67, 22);
 }
-
 .add-icon {
   width: 20px;
   height: 20px;
@@ -145,8 +146,6 @@ input::placeholder {
 input:focus {
   outline: none;
 }
-
-
 .delete-contact-button {
   display: inline-flex;
   align-items: center;
@@ -157,7 +156,9 @@ input:focus {
   border-radius: 4px;
   cursor: pointer;
 }
-
+.delete-contact-button:active {
+      background-color: rgb(95, 34, 34);
+}
 .delete-icon {
   width: 20px;
   height: 20px;
@@ -165,7 +166,6 @@ input:focus {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
 .edit-contact-button {
   display: inline-flex;
   align-items: center;
@@ -175,11 +175,25 @@ input:focus {
   border-radius: 4px;
   cursor: pointer;
 }
-
+.edit-contact-button:active {
+      background-color: rgb(33, 33, 33);
+}
 .edit-icon {
   width: 20px;
   height: 20px;
   background-image: url('src/assets/edit-button.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.profile-icon-name {
+      display: inline-flex;
+      align-items: center;
+}
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 18px;
+  background-image: url('src/assets/default-profile.svg');
   background-size: cover;
   background-repeat: no-repeat;
 }
