@@ -33,8 +33,8 @@ const filteredContacts = computed(() => {
 function addNewContact() {
       const newContact = {
             id: contacts.length +1,
-            firstname: '',
-            lastname: '',
+            firstname: 'New',
+            lastname: 'Contact',
             phone: '',
             email: '',
             showDetails: false,
