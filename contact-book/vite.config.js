@@ -10,7 +10,6 @@ export default defineConfig({
     vue(),
     vueJsx(),
   ],
-  base: "/<https://samo0018.github.io/mtm6407-contact-book/>/",
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
